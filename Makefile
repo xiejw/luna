@@ -10,8 +10,8 @@ LDFLAGS += -lm
 # === MODS ---------------------------------------------------------------------
 #
 MODS    += ${BUILD}/weights.o
+MODS    += ${BUILD}/ops.o
 MODS    += ${BUILD}/main.o
-
 
 # === Rules --------------------------------------------------------------------
 #
@@ -29,6 +29,10 @@ ${BUILD}/%.o: src/%.c | ${BUILD}
 ${BUILD}/%.o: cmd/%.c | ${BUILD}
 	${CC} ${CFLAGS} -o $(shell printf "%-20s" $@) -c $<
 
+compile: ${MODS}
+
+# === House Keeping ------------------------------------------------------------
+#
 ${BUILD}:
 	@mkdir -p ${BUILD}
 
