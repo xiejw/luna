@@ -1,11 +1,25 @@
-BUILD    = .build
+UNAME     = $(shell uname)
+BUILD     = .build
+SHELL     = bash
 
 # === CFLAGS and LDFLAGS -------------------------------------------------------
 #
-CFLAGS  += -std=c11
+CFLAGS  += -std=c11 -Wall -Werror -pedantic -Wextra -Wfatal-errors -Wconversion
+CFLAGS  += -Wno-unused-parameter
 CFLAGS  += -I.
 
 LDFLAGS += -lm
+
+ifdef RELEASE
+CFLAGS   += -DNDEBUG -O3 -march=native
+LDFLAGS  += -ffast-math
+else
+CFLAGS   += -g
+endif
+
+ifdef ASAN
+CFLAGS   += -fsanitize=address
+endif
 
 # === MODS ---------------------------------------------------------------------
 #

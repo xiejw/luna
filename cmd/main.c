@@ -2,12 +2,14 @@
 #include "src/weights.h"
 
 int
-main( )
+main( void )
 {
         error_t err = OK;
         void   *ptr = NULL;
         err         = qwen3_weights_load( "weights.bin", &ptr );
         if ( err != OK ) PANIC( "fail to load weights." );
+
+        goto cleanup;
 
 cleanup:
         qwen3_weights_unload( ptr );
