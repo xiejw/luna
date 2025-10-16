@@ -1,15 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>  // exit
-
+#include "src/utils.h"
 #include "src/weights.h"
-
-#define PANIC( msg )                         \
-        do {                                 \
-                printf( "=== panic ===\n" ); \
-                printf( msg "\n" );          \
-                fflush( stdout );            \
-                exit( -1 );                  \
-        } while ( 0 )
 
 int
 main( )
