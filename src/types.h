@@ -21,5 +21,11 @@ typedef unsigned char byte;
 
 typedef int error_t;
 
-#define OK  0
-#define ERR -1
+#define OK        0
+#define ERROR     -1
+#define EMALLOC   -2
+#define ENOTEXIST -3
+#define ENOTIMPL  -4
+#define EIO       -5
+#define EEOF      -6
+#define EINVALID  -7

@@ -11,6 +11,8 @@ LDFLAGS += -lm
 #
 MODS    += ${BUILD}/weights.o
 MODS    += ${BUILD}/ops.o
+MODS    += ${BUILD}/sds.o
+MODS    += ${BUILD}/vec.o
 MODS    += ${BUILD}/main.o
 
 # === Rules --------------------------------------------------------------------
