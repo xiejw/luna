@@ -1,8 +1,10 @@
-run:
-	cargo run
+${BUILD}:
+	mkdir -p ${BUILD}
 
-test:
-	cargo test
+test: compile
 
 fmt:
-	cargo fmt
+	~/Workspace/y/tools/clang_format_all.sh .
+
+clean:
+	rm -rf ${BUILD}
