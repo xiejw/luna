@@ -2,5 +2,4 @@
 
 #include "types.h"
 
-void ops_matmul( f32 *restrict out, f32 *restrict a, f32 *restrict b, int m,
-                 int n, int k );
+void ops_matmul( f32 *out, f32 *a, f32 *b, int m, int n, int k );
