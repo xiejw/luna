@@ -1,16 +1,16 @@
+#include "src/qwen3.h"
 #include "src/utils.h"
-#include "src/weights.h"
 
 int
 main( void )
 {
-        error_t err = OK;
-        void   *ptr = NULL;
-        err         = qwen3_weights_load( "weights.bin", &ptr );
+        error_t    err = OK;
+        Qwen3Model ptr;
+        err = qwen3_model_load( "weights.bin", &ptr );
         if ( err != OK ) PANIC( "fail to load weights." );
 
         goto cleanup;
 
 cleanup:
-        qwen3_weights_unload( ptr );
+        qwen3_model_unload( &ptr );
 }

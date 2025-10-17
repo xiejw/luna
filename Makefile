@@ -23,7 +23,7 @@ endif
 
 # === MODS ---------------------------------------------------------------------
 #
-MODS    += ${BUILD}/weights.o
+MODS    += ${BUILD}/qwen3.o
 MODS    += ${BUILD}/ops.o
 MODS    += ${BUILD}/sds.o
 MODS    += ${BUILD}/vec.o
