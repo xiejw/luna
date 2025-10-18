@@ -1,14 +1,18 @@
+// vim: ft=cpp
 #pragma once
 
-#include "types.h"
+#include <zion/zion.h>
 
-typedef struct Qwen3Config {
+struct Qwen3Config {
         int n_layer;
-} Qwen3Config;
+};
 
-typedef struct Qwen3Model {
+struct Qwen3Model {
         Qwen3Config cfg;
-} Qwen3Model;
 
-error_t qwen3_model_load( const char *filename, _INOUT_ Qwen3Model *pout );
-void    qwen3_model_unload( Qwen3Model *p );
+      public:
+        ~Qwen3Model( ) = default;
+
+      public:
+        zion::Expected<void> load_model( const char *filename );
+};

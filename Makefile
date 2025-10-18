@@ -2,11 +2,13 @@ UNAME     = $(shell uname)
 BUILD     = .build
 SHELL     = bash
 
+ZION_PATH = ../y/ann/zion/cc
+
 # === CXXFLAGS and LDFLAGS -------------------------------------------------------
 #
 CXXFLAGS  += -std=c++23 -Wall -Werror -pedantic -Wextra -Wfatal-errors -Wconversion
 CXXFLAGS  += -Wno-unused-parameter
-CXXFLAGS  += -I.
+CXXFLAGS  += -I. -I${ZION_PATH}/include
 
 LDFLAGS += -lm
 
