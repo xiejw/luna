@@ -1,7 +1,9 @@
+// vim: ft=cpp
 #pragma once
 
-#include "types.h"
+#include <zion/zion.h>
 
+<<<<<<< HEAD
 typedef struct Qwen3Config {
         int vocab_size;      // Vocabulary size
         int context_length;  // Length originally used during training
@@ -14,10 +16,18 @@ typedef struct Qwen3Config {
         int n_kv_groups;     // Key-Value groups for GQA
         f32 rope_base;       // The base in RoPE's "theta"
 } Qwen3Config;
+=======
+struct Qwen3Config {
+        int n_layer;
+};
+>>>>>>> 14e8972076dfe7834818370011719b94188f72f6
 
-typedef struct Qwen3Model {
+struct Qwen3Model {
         Qwen3Config cfg;
-} Qwen3Model;
 
-error_t qwen3_model_load( const char *filename, _INOUT_ Qwen3Model *pout );
-void    qwen3_model_unload( Qwen3Model *p );
+      public:
+        ~Qwen3Model( ) = default;
+
+      public:
+        zion::Expected<void> load_model( const char *filename );
+};

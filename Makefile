@@ -2,31 +2,31 @@ UNAME     = $(shell uname)
 BUILD     = .build
 SHELL     = bash
 
-# === CFLAGS and LDFLAGS -------------------------------------------------------
+ZION_PATH = ../y/ann/zion/cc
+
+# === CXXFLAGS and LDFLAGS -------------------------------------------------------
 #
-CFLAGS  += -std=c11 -Wall -Werror -pedantic -Wextra -Wfatal-errors -Wconversion
-CFLAGS  += -Wno-unused-parameter
-CFLAGS  += -I.
+CXXFLAGS  += -std=c++23 -Wall -Werror -pedantic -Wextra -Wfatal-errors -Wconversion
+CXXFLAGS  += -Wno-unused-parameter
+CXXFLAGS  += -I. -I${ZION_PATH}/include
 
 LDFLAGS += -lm
 
 ifdef RELEASE
-CFLAGS   += -DNDEBUG -O3 -march=native
+CXXFLAGS   += -DNDEBUG -O3 -march=native
 LDFLAGS  += -ffast-math
 else
-CFLAGS   += -g
+CXXFLAGS   += -g
 endif
 
 ifdef ASAN
-CFLAGS   += -fsanitize=address
+CXXFLAGS   += -fsanitize=address
 endif
 
 # === MODS ---------------------------------------------------------------------
 #
 MODS    += ${BUILD}/qwen3.o
 MODS    += ${BUILD}/ops.o
-MODS    += ${BUILD}/sds.o
-MODS    += ${BUILD}/vec.o
 MODS    += ${BUILD}/main.o
 
 # === Rules --------------------------------------------------------------------
@@ -37,13 +37,13 @@ run: ${BUILD}/a.out
 	@$<
 
 ${BUILD}/a.out: ${MODS} | ${BUILD}
-	${CC} -o $@ ${LDFLAGS} ${MODS}
+	${CXX} -o $@ ${LDFLAGS} ${MODS}
 
-${BUILD}/%.o: src/%.c | ${BUILD}
-	${CC} ${CFLAGS} -o $(shell printf "%-20s" $@) -c $<
+${BUILD}/%.o: src/%.cc | ${BUILD}
+	${CXX} ${CXXFLAGS} -o $(shell printf "%-20s" $@) -c $<
 
-${BUILD}/%.o: cmd/%.c | ${BUILD}
-	${CC} ${CFLAGS} -o $(shell printf "%-20s" $@) -c $<
+${BUILD}/%.o: cmd/%.cc | ${BUILD}
+	${CXX} ${CXXFLAGS} -o $(shell printf "%-20s" $@) -c $<
 
 compile: ${MODS}
 
