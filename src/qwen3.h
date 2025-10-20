@@ -3,8 +3,7 @@
 
 #include <zion/zion.h>
 
-<<<<<<< HEAD
-typedef struct Qwen3Config {
+struct Qwen3Config {
         int vocab_size;      // Vocabulary size
         int context_length;  // Length originally used during training
         int emb_dim;         // Embedding dimension
@@ -15,12 +14,7 @@ typedef struct Qwen3Config {
         int qk_norm;         // Whether to normalize queries & keys (bool)
         int n_kv_groups;     // Key-Value groups for GQA
         f32 rope_base;       // The base in RoPE's "theta"
-} Qwen3Config;
-=======
-struct Qwen3Config {
-        int n_layer;
 };
->>>>>>> 14e8972076dfe7834818370011719b94188f72f6
 
 struct Qwen3Model {
         Qwen3Config cfg;
